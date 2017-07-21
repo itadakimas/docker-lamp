@@ -1,5 +1,6 @@
 database:
   image: mysql:5.7
+  restart: always
   ports:
     - "8081:3306"
   environment:
@@ -12,6 +13,7 @@ database:
     - ./database/initdb.d/01-dump.sql:/docker-entrypoint-initdb.d/01-dump.sql
 webserver:
   build: ./webserver
+  restart: always
   links:
     - database
   ports:
